@@ -1,3 +1,5 @@
+# ignore test files
+/run.py
 /config.json
 /tests
 # Byte-compiled / optimized / DLL files
