@@ -28,7 +28,7 @@ class EzConfig:
         headers (Union[str, str], optional): Column headers, example: ("Key", "Value"). Defaults to None.
         box (box.Box, optional): One of the constants in box.py used to draw the edges (see :ref:`appendix_box`), or ``None`` for no box lines. Defaults to box.ROUNDED.
         style (StyleType, optional): Default style for the table. Defaults to "bold white".
-        column_styles (Union[StyleType, StyleType], optional): Union of 2 row styles. Defaults to ("bold blue", "bold green").
+        column_styles (Union[StyleType, StyleType], optional): Union of 2 row styles. Defaults to ("bold cyan", "bold green").
         console (Console, optional): Optional <rich.console.Console> object, if you want to use your custom rich console. Defaults to None.
         configure_text (str, optional): Text that shows up when the configure method is used. Defaults to None.
     """       
@@ -45,7 +45,7 @@ class EzConfig:
                  headers: Optional[Union[str, str]] = None,
                  box: box.Box = box.ROUNDED,
                  style: Optional[StyleType] = "bold white",
-                 column_styles: Union[StyleType, StyleType] = ("bold blue", "bold green"),
+                 column_styles: Union[StyleType, StyleType] = ("bold cyan", "bold green"),
                  console: Optional[Console] = None,
                  configure_text: str = None,
     ) -> None:

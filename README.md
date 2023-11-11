@@ -8,4 +8,8 @@
 
 #### `ezconfig` is a Python library for easy and beautiful formatting config file right in the terminal.
 
+Press ENTER and run your code, **or change varialables right there!**
 
+![da](https://i.imgur.com/AM0Pdjj.jpg)
+
+### Getting Started
