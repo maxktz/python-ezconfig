@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 setup_args = {
     "name": "python-ezconfig",
-    "version": "0.1.3",
+    "version": "0.2.0",
     "author_email": "zrxmax@icloud.com",
     "url": "https://github.com/zrxmax/python-ezconfig",
     "license": "MIT",
