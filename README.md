@@ -85,9 +85,10 @@ you can change this file by passing `saving_json={file}` to `EzConfig()`
     and to you, just by 'EzConfig.config' dictionary <3
 
     Arguments:
+        *key_prompts (KeyPrompt | str), Prompts, to ask user for. Required.
         saving_json (Path | str, optional): path to json file to save config into. Defaults to "config.json".
-        show_index (bool, optional):  Defaults to True.
-        show_lines (bool, optional): . Defaults to False.
+        show_index (bool, optional): True/False to show numbers column for rows. Defaults to True.
+        show_lines (bool, optional): True/False to show separation horizontal lines. Defaults to False.
         clean_console (bool, optional): True/False to clean up console between printing. Defaults to True.
         title (str, optional): The title of the table rendered at the top.. Defaults to None.
         caption (str, optional): The table caption rendered below.. Defaults to None.
@@ -97,6 +98,7 @@ you can change this file by passing `saving_json={file}` to `EzConfig()`
         column_styles (Union[StyleType, StyleType], optional): Union of 2 row styles. Defaults to ("bold cyan", "bold green").
         console (Console, optional): Optional <rich.console.Console> object, if you want to use your custom rich console. Defaults to None.
         configure_text (str, optional): Text that shows up when the configure method is used. Defaults to None.
+
 EzConfig class methods:
 
 `ezconfig.EzConfig.configure()` - Main method, prints configuration table and enables editing mode.
@@ -111,12 +113,12 @@ EzConfig class methods:
 
     Args:
         key (str): Key name, must be str
-        default_value (str, oprional): Will be default value if there is no saved values. Defaults to None.
+        default_value (str, optional): Will be default value if there are no saved values. Defaults to None.
         can_be_empty (bool, optional): True/False. Defaults to True.
         value_type (ValueType, optional): Value will be passed instance. Defaults to str.
 
 there is no methods for this class.
 
-##### That's all, thank you for attention <3, here u can buy me a coffee
+##### That's all, thank you for your attention <3, here u can buy me a coffee
 Any crypto network: `0x753846BF882046c5Edc3cefED30A4E6Bf8F99999`
 <p><a href="https://www.buymeacoffee.com/zrxmax"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="zrxmax" /></a><a href="https://ko-fi.com/zrxmax"> <img align="left" src="https://cdn.ko-fi.com/cdn/kofi3.png?v=3" height="50" width="210" alt="zrxmax" /></a></p><br><br></p>
