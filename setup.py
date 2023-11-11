@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 setup_args = {
     "name": "python-ezconfig",
-    "version": "0.1.1",
+    "version": "0.1.3",
     "author_email": "zrxmax@icloud.com",
     "url": "https://github.com/zrxmax/python-ezconfig",
     "license": "MIT",
@@ -21,8 +21,7 @@ setup_args = {
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    "package_dir": {"": "ezconfig"},
-    "packages": find_packages(where="ezconfig"),
+    "packages": find_packages(),
     "python_requires": ">=3.7"
 }
 

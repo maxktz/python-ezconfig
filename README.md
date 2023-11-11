@@ -2,7 +2,7 @@
 
 [![my telegram](https://img.shields.io/badge/my-telegram-blue)](https://t.me/zrxmax) [![xcrypto telegram](https://img.shields.io/badge/xcrypto%20+=%20dev-telegram-blue)](https://t.me/+vx4yLtrRcvAyZWM0)
 
-![Logo](docs/ezconfig.png)
+![Logo](https://i.imgur.com/mbH37Fx.png)
 
 [English readme](https://github.com/textualize/rich/blob/master/README.md) • [Russian readme](https://github.com/textualize/rich/blob/master/README.cn.md)
 
