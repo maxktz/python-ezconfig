@@ -10,6 +10,7 @@ from rich.style import StyleType
 from . import utils
 from .errors import KeyNotFoundError, NoPairError, RequiredParameterError, ValueTypeError
 from .key_prompt import KeyPrompt
+from .types import ValueType
 
 
 class EzConfig:
@@ -19,9 +20,10 @@ class EzConfig:
     and to you, just by 'EzConfig.config' dictionary <3
 
     Args:
+        *key_prompts (KeyPrompt | str), Prompts, to ask user for. Required.
         saving_json (Path | str, optional): path to json file to save config into. Defaults to "config.json".
-        show_index (bool, optional):  Defaults to True.
-        show_lines (bool, optional): . Defaults to False.
+        show_index (bool, optional): True/False to show numbers column for rows. Defaults to True.
+        show_lines (bool, optional): True/False to show separation horizontal lines. Defaults to False.
         clean_console (bool, optional): True/False to clean up console between printing. Defaults to True.
         title (str, optional): The title of the table rendered at the top.. Defaults to None.
         caption (str, optional): The table caption rendered below.. Defaults to None.
@@ -40,7 +42,7 @@ class EzConfig:
                  show_index: bool = True,
                  show_lines: bool = False,
                  clean_console: bool = True,
-                 title: Optional[str] = "[bold green]ezconfig",
+                 title: Optional[str] = "[bold green]ezconfig[cyan]([white]{saving_json}[cyan])",
                  caption: Optional[str] = None,
                  headers: Optional[Union[str, str]] = None,
                  box: box.Box = box.ROUNDED,
@@ -119,16 +121,25 @@ class EzConfig:
     def _parse_input_key(self, key: str) -> str:
         return key.strip().lower()
     
-    def _parse_input_value(self, value: str) -> None | str:
+    def _parse_input_value(self, key: str, value: str, value_type: ValueType) -> None | str:
         value = value.strip()
         if value in ("", "~"):
             return None
-        return value
+        if value_type is bool:
+            if value.lower() in ("0", "false"):
+                return False 
+            if value.lower() in ("1", "true"):
+                return True
+            raise ValueTypeError(key, value, value_type)
+        try:
+            return value_type(value)
+        except (ValueError, TypeError):
+            raise ValueTypeError(key, value, value_type)
     
     def _parse_input_data(self, input_data: str) -> Union[str, str]:
         data = input_data.split("=", 1)
         key = self._parse_input_key(data[0])
-        value = self._parse_input_value(data[1])
+        value = data[1].strip()
         return key, value
     
     def print_config(self):
@@ -158,23 +169,20 @@ class EzConfig:
                     return
                 continue
             elif input_data.lower() in ("exit", "q", "quit"):
-                sys.exit(0)
-                
+                sys.exit(0) 
             try:
-                key, val = self._parse_input_data(input_data)
+                key, value = self._parse_input_data(input_data)
             except IndexError:
                 message = f'{warn} {NoPairError()}'
                 continue
-            
             for index, prompt in enumerate(self.key_prompts, 1):
                 if key in (str(index), prompt.key.lower()):
-                    if val is not None:
-                        try:
-                            val = prompt.value_type(val)
-                        except (ValueError, TypeError):
-                            message = f'{warn} {ValueTypeError(prompt.key, val, prompt.value_type)}'
-                            break
-                    self.config[prompt.key] = val
+                    try:
+                        value = self._parse_input_value(prompt.key, value, prompt.value_type)
+                    except ValueTypeError as error:
+                        message = f'{warn} {error}'
+                        break
+                    self.config[prompt.key] = value
                     break
             else:
                 message = f'{warn} {KeyNotFoundError(key)}'

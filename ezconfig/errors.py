@@ -6,7 +6,7 @@ class KeyNotFoundError(BaseException):
 
 class RequiredParameterError(BaseException):
     def __str__(self):
-        return f'parameter "{self.args[0]}" is required'
+        return f'parameter {self.args[0]} is required'
 
 class NoPairError(BaseException):
     def __str__(self):
