@@ -111,8 +111,8 @@ EzConfig class methods:
 
     Defines a key-value prompt for EzConfig.
 
-    Args:
-        key (str): Key name, must be str
+    Arguments:
+        key (str): Key name, must be str.
         default_value (str, optional): Will be default value if there are no saved values. Defaults to None.
         can_be_empty (bool, optional): True/False. Defaults to True.
         value_type (ValueType, optional): Value will be passed instance. Defaults to str.
