@@ -4,7 +4,7 @@
 
 ![Logo](https://i.imgur.com/mbH37Fx.png)
 
-[English readme](https://github.com/textualize/rich/blob/master/README.md)
+[English readme](https://github.com/zrxmax/python-ezconfig/blob/main/README.md)
 
 ### `ezconfig` is a Python library for easy formatting config file right from the terminal.
 
